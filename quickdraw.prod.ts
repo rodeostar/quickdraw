@@ -1,3 +1,3 @@
-import { QuickdrawProduction } from "quickdraw";
+import { server } from "quickdraw";
 
-QuickdrawProduction();
+server();

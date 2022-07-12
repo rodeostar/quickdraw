@@ -1,10 +1,10 @@
-import { open, debounce, HMRServer, consts } from "quickdraw";
+import { open, debounce, join, HMRServer, consts } from "quickdraw";
 
 export default async function dev() {
   const { startup } = await import("quickdraw");
   const { default: server } = await import("./server.ts");
 
-  await startup();
+  await startup("development");
 
   // Launch the server
   server();
@@ -19,8 +19,14 @@ export default async function dev() {
     watcherCallback = () => ws.send("RELOAD");
   });
 
-  for await (const _event of Deno.watchFs(consts.app)) {
-    console.log(_event);
-    debounce(startup, 1000)(watcherCallback);
+  const folders = [];
+
+  for await (const { name } of Deno.readDir(consts.app)) {
+    if (name != ".qd") {
+      folders.push(join(consts.app, name));
+    }
+  }
+  for await (const _event of Deno.watchFs(folders, { recursive: true })) {
+    debounce(startup, 1000)("development", watcherCallback);
   }
 }

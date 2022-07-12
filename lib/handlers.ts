@@ -5,7 +5,6 @@ import {
   Context,
   consts,
   html,
-  join,
   Log,
   walk,
 } from "quickdraw";
@@ -72,11 +71,11 @@ export const routeIsStatic: ContextHelper<boolean> = (context) => {
 export const importRoutes = async () => {
   const results: Routes = {};
 
-  const { default: importPaths } = await import("@qd/imports.ts");
+  const { default: importPaths } = await import("@app/.qd/imports.ts");
 
   for (const [name, route] of Object.entries(importPaths)) {
     if (!route.importPath) continue;
-    await import(`file:///${route.importPath}`).then((contents) => {
+    await import(route.importPath).then((contents) => {
       const { default: Component } = contents;
       results[name] = {
         ...(contents?.seo && { seo: contents.seo }),

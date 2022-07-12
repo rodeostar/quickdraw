@@ -22,3 +22,12 @@ export type Route = {
   importPath?: string;
   handler?: APIHandler;
 };
+
+export type BundleMode = "production" | "development";
+
+export type CDNPrefix = "localhost" | string;
+
+export type QuickdrawOptions = {
+  cdn: CDNPrefix;
+  mode: BundleMode;
+};

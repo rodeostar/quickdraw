@@ -1,7 +1,7 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "compile": "deno compile --target x86_64-unknown-linux-gnu --allow-net --allow-read --allow-env --allow-write --allow-run quickdraw.prod.ts",
+    "prebuild": "deno run --allow-net --allow-read --allow-env --allow-write --allow-run quickdraw.prebuild.ts",
     "dev": "deno run --allow-net --allow-read --allow-env --allow-write --allow-run quickdraw.dev.ts",
     "prod": "deno run --allow-net --allow-read --allow-env --allow-write --allow-run quickdraw.prod.ts"
   },

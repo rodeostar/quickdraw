@@ -5,8 +5,8 @@ const withBase = (path: string) => join(Deno.cwd(), path);
 export default {
   importMap: "import_map.json",
   hmrClient: withBase("./lib/hmr/client.ts"),
-  quickdraw: withBase("./.quickdraw"),
-  genClient: withBase("./.quickdraw/client"),
+  quickdraw: withBase("./app/.qd"),
+  genClient: withBase("./app/.qd/client"),
   app: withBase("./app"),
   api: withBase("./app/api"),
   pages: withBase("./app/pages"),
@@ -17,7 +17,7 @@ export default {
   ext: {
     hydrate: "hydrate",
   },
-  assets: withBase("./.quickdraw/assets"),
+  assets: withBase("./app/.qd/assets"),
   filenames: {
     imports: "imports.ts",
   },

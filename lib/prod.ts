@@ -1,5 +1,5 @@
-import { server, startup } from "quickdraw";
+import { startup } from "quickdraw";
 
-export default async () => {
-  await startup(server);
-};
+export function Prep(callback: () => void) {
+  startup("production", callback);
+}

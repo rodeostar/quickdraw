@@ -4,10 +4,4 @@ npm/
 *.exe
 Makefile
 
-
-.quickdraw/imports.ts
-.quickdraw/assets/*
-!.quickdraw/assets/.placeholder
-
-.quickdraw/client/*
-!.quickdraw/client/.placeholder
+app/.qd/hmr.js

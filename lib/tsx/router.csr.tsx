@@ -8,7 +8,7 @@ export type HydrationCallback = (params: {
 }) => void;
 
 export async function hydrateRoutedComponents() {
-  return await import("@qd/imports.ts").then(({ default: Routes }) => {
+  return await import("@app/.qd/imports.ts").then(({ default: Routes }) => {
     const route = Routes[window.location.pathname];
 
     hydrate(

@@ -5,14 +5,17 @@ import {
   bundler,
   bundleGlobal,
   bundleHMR,
-  getMode,
   join,
   exists,
   FileHelper,
   Template,
+  BundleMode,
 } from "quickdraw";
 
-export default async function startup(onComplete?: () => void) {
+export default async function startup(
+  mode: BundleMode = "production",
+  onComplete?: () => void
+) {
   class Startup {
     pages: FileHelper[];
     hydraters: string[];
@@ -31,17 +34,16 @@ export default async function startup(onComplete?: () => void) {
         if (name.includes(consts.ext.hydrate)) {
           this.hydraters.push(name);
         } else {
-          this.pages.push(new FileHelper(consts.pages, name, hasGlobalJS));
+          this.pages.push(new FileHelper(name, hasGlobalJS));
         }
       }
     }
 
-    async createRoutes() {
+    createRoutes() {
       for (const page of this.pages) {
         this.routes[page.path] = page.route;
         page.hasHydration(this.hydraters);
         page.createImport();
-        await page.writeImport();
       }
     }
 
@@ -82,23 +84,20 @@ export default async function startup(onComplete?: () => void) {
 
     async bundlePages() {
       for (const page of this.pages) {
-        await bundler(page.name);
+        await bundler(mode, page.name);
       }
     }
   }
 
   const StartupInstance = new Startup();
   await StartupInstance.getPages();
-  await StartupInstance.createRoutes();
+  StartupInstance.createRoutes();
   await StartupInstance.writeChunks();
-  await StartupInstance.bundlePages();
-  await bundleGlobal();
+  await bundleGlobal(mode);
 
-  if (getMode() === "development") {
-    await bundleHMR();
+  if (mode === "development") {
+    await bundleHMR(mode);
   }
-
-  console.log("An update was made, recompiling internals.");
 
   if (onComplete) {
     onComplete();

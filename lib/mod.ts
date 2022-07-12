@@ -26,6 +26,9 @@ import settings from "./config.ts";
 export { settings };
 
 export type {
+  BundleMode,
+  QuickdrawOptions,
+  CDNPrefix,
   Routes,
   Route,
   Params,
@@ -40,7 +43,7 @@ import consts from "./util/consts.ts";
 export { html } from "./tsx/html.tsx";
 export { Log } from "./util/logging.ts";
 
-export { bundler, bundleGlobal, bundleHMR, getMode } from "./bundler.ts";
+export { bundler, bundleGlobal, bundleHMR } from "./bundler.ts";
 export { initializeTailwind } from "./tailwind.ts";
 export { startServer } from "./backend.ts";
 export { exists } from "./util/exists.ts";
@@ -66,8 +69,8 @@ import banner, { startupMessage } from "./util/banner.ts";
 import HMRServer from "./hmr/server.ts";
 
 import QuickdrawDevelop from "./dev.ts";
-import QuickdrawProduction from "./prod.ts";
+export { Prep } from "./prod.ts";
 
-export { QuickdrawDevelop, QuickdrawProduction };
+export { QuickdrawDevelop };
 
 export { consts, HMRServer, banner, startupMessage, server, startup };

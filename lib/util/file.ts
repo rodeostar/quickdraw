@@ -10,12 +10,12 @@ export class FileHelper {
   includesHydration: boolean;
   route: Route;
 
-  constructor(pages: string, filename: string, hasGlobalJS: boolean) {
+  constructor(filename: string, hasGlobalJS: boolean) {
     // about.tsx -> "about"
     this.name = filename.split(".tsx")[0];
 
     // about -> "/cwd/about.tsx"
-    this.importPath = join(pages, filename);
+    this.importPath = "@app/pages/" + filename;
 
     // about -> "/about.hydrate.tsx"
     this.hydration = PathHelper.hdrPath(this.name);
@@ -72,12 +72,5 @@ export class FileHelper {
     if (hydrate) {
       this.import.prepend(`import "@app/pages/${this.name}.hydrate.tsx";`);
     }
-  }
-
-  async writeImport() {
-    await Deno.writeTextFile(
-      join(consts.genClient, `${this.name}.tsx`),
-      this.import.get()
-    );
   }
 }
