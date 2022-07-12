@@ -1,12 +1,11 @@
 import { virtualSheet, setup } from "quickdraw";
+import config from "@app/tailwind.config.ts";
 
 export const sheet = virtualSheet();
 
-export async function initializeTailwind() {
-  await import("@app/tailwind.config.ts").then(({ default: config }) => {
-    setup({
-      ...config,
-      sheet,
-    });
+export function initializeTailwind() {
+  setup({
+    ...config,
+    sheet,
   });
 }
