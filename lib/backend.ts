@@ -14,10 +14,12 @@ import {
   OakRouter,
 } from "quickdraw";
 
+import importPaths from "@app/.qd/imports.ts";
+
 export async function startServer(port = 5000) {
   const router = new OakRouter();
   const app = new Application();
-  const routes = await importRoutes();
+  const routes = importPaths;
   const apiRoutes = await importServices();
 
   app.use(router.routes());

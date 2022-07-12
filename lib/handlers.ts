@@ -68,26 +68,6 @@ export const routeIsStatic: ContextHelper<boolean> = (context) => {
   return /\.(css|js|jpg|png|svg|gif|)$/i.test(context.request.url.pathname);
 };
 
-export const importRoutes = async () => {
-  const results: Routes = {};
-
-  const { default: importPaths } = await import("@app/.qd/imports.ts");
-
-  for (const [name, route] of Object.entries(importPaths)) {
-    if (!route.importPath) continue;
-    await import(route.importPath).then((contents) => {
-      const { default: Component } = contents;
-      results[name] = {
-        ...(contents?.seo && { seo: contents.seo }),
-        ...route,
-        Component,
-      };
-    });
-  }
-
-  return results;
-};
-
 const getAllfiles = (path: string) =>
   walk(path, { includeDirs: false, exts: [".ts"] });
 
