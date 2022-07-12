@@ -10,7 +10,7 @@ import {
 } from "quickdraw";
 
 import { CommonRouter } from "quickdraw/client";
-
+import { Layout } from "@app/common/layout.tsx";
 import { sheet } from "../tailwind.ts";
 
 function naiveMinify(html: string) {
@@ -25,9 +25,7 @@ function naiveMinify(html: string) {
   return html;
 }
 
-export const html = async (routes: Routes, route: Route) => {
-  const { Layout } = await import("@app/common/layout.tsx");
-
+export const html = (routes: Routes, route: Route) => {
   const ssr = renderSSR(() => (
     <Layout routes={routes} params={route}>
       <Fragment>
