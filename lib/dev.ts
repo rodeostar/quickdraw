@@ -1,7 +1,6 @@
 import { open, debounce, HMRServer, consts } from "quickdraw";
 
 export default async function dev() {
-  Deno.env.set("MODE", "development");
   const { startup } = await import("quickdraw");
   const { default: server } = await import("./server.ts");
 
