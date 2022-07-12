@@ -1,0 +1,12 @@
+{
+  "importMap": "import_map.json",
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env --allow-write --allow-run quickdraw.dev.ts",
+    "prod": "deno run --allow-net --allow-read --allow-env --allow-write --allow-run quickdraw.prod.ts"
+  },
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"],
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment"
+  }
+}
