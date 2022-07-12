@@ -1,5 +1,4 @@
 // Remote deps
-export { ensureDir } from "https://deno.land/std@0.147.0/fs/mod.ts";
 export { debounce } from "https://deno.land/std@0.147.0/async/mod.ts";
 export { open } from "https://deno.land/x/open@v0.0.5/index.ts";
 export * as colors from "https://deno.land/std@0.147.0/fmt/colors.ts";

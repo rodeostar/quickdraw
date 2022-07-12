@@ -1,3 +1,13 @@
-.quickdraw
+
 .vscode
 npm/
+*.exe
+Makefile
+
+
+.quickdraw/imports.ts
+.quickdraw/assets/*
+!.quickdraw/assets/.placeholder
+
+.quickdraw/client/*
+!.quickdraw/client/.placeholder

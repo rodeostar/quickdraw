@@ -1,11 +1,4 @@
-import {
-  Route,
-  ensureDir,
-  consts,
-  Template,
-  PathHelper,
-  join,
-} from "quickdraw";
+import { Route, consts, Template, PathHelper, join } from "quickdraw";
 
 export class FileHelper {
   name: string;
@@ -82,8 +75,6 @@ export class FileHelper {
   }
 
   async writeImport() {
-    await ensureDir(consts.genClient);
-    await ensureDir(consts.assets);
     await Deno.writeTextFile(
       join(consts.genClient, `${this.name}.tsx`),
       this.import.get()
