@@ -1,5 +1,4 @@
 import {
-  importServices,
   routeExists,
   serviceExists,
   routeIsStatic,
@@ -13,18 +12,18 @@ import {
   OakRouter,
 } from "quickdraw";
 
-import importPaths from "@app/.qd/imports.ts";
+import routes from "@app/.qd/imports.ts";
+import apiRoutes from "@app/.qd/manifest.ts";
 
 export async function startServer(port = 5000) {
   const router = new OakRouter();
   const app = new Application();
-  const routes = importPaths;
-  const apiRoutes = await importServices();
 
   app.use(router.routes());
   app.use(router.allowedMethods());
   app.use(async (context) => {
-    const ctx = routes[context.request.url.pathname];
+    const { pathname } = context.request.url;
+    const ctx = routes[pathname];
     if (serviceExists(context, apiRoutes)) {
       serveAPI(context, apiRoutes);
     } else if (routeExists(context, routes)) {

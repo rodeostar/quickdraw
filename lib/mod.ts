@@ -52,7 +52,6 @@ export { Template } from "./util/template.ts";
 export { PathHelper } from "./util/path.ts";
 
 export {
-  importServices,
   routeExists,
   serviceExists,
   routeIsStatic,

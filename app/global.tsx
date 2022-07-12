@@ -4,7 +4,15 @@ import { Menu } from "./common/nav.tsx";
 
 async function global() {
   const props = await hydrateRoutedComponents();
+
+  // Hydrate the menu so SPA routing works.
   hydrate(<Menu {...props} />, document.getElementById("menuItems"));
+
+  if (props.params.path === "/") {
+    import("@app/common/ui/names.tsx").then(({ Names }) => {
+      hydrate(<Names />, document.getElementById("names"));
+    });
+  }
 }
 
 global();

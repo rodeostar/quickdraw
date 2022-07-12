@@ -3,6 +3,7 @@ import { join } from "quickdraw";
 const withBase = (path: string) => join(Deno.cwd(), path);
 
 export default {
+  apiManifest: withBase("./app/.qd/manifest.ts"),
   importMap: "import_map.json",
   hmrClient: withBase("./lib/hmr/client.ts"),
   quickdraw: withBase("./app/.qd"),

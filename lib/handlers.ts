@@ -6,7 +6,6 @@ import {
   consts,
   html,
   Log,
-  walk,
 } from "quickdraw";
 
 export type QuickdrawHandler<T = void> = (
@@ -60,26 +59,11 @@ export const serviceExists = (
   context: Context,
   routes: Record<string, APIHandler>
 ) => {
-  if (!routes) return undefined;
-  return routes[context?.request?.url?.pathname] ?? undefined;
+  const route = context?.request?.url?.pathname;
+  if (!routes || !route.includes("/api")) return undefined;
+  return routes[route] ?? undefined;
 };
 
 export const routeIsStatic: ContextHelper<boolean> = (context) => {
   return /\.(css|js|jpg|png|svg|gif|)$/i.test(context.request.url.pathname);
-};
-
-const getAllfiles = (path: string) =>
-  walk(path, { includeDirs: false, exts: [".ts"] });
-
-export const importServices = async () => {
-  const routes: Record<string, APIHandler> = {};
-
-  for await (const e of getAllfiles(consts.api)) {
-    const key = e.path.replace(/\\/g, "/").split("/api")[1].replace(".ts", "");
-    const Handler = await import(`file:///${e.path}`);
-    const handler = Handler.default;
-    routes["/api" + key] = handler;
-  }
-
-  return routes;
 };

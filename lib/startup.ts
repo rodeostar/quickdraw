@@ -12,6 +12,8 @@ import {
   BundleMode,
 } from "quickdraw";
 
+import { recursiveReaddir } from "https://deno.land/x/recursive_readdir@v2.0.0/mod.ts";
+
 export default async function startup(
   mode: BundleMode = "production",
   onComplete?: () => void
@@ -45,6 +47,29 @@ export default async function startup(
         page.hasHydration(this.hydraters);
         page.createImport();
       }
+    }
+
+    // Really could use dynamic imports at runtime ):
+    // https://github.com/denoland/deploy_feedback/issues/38
+    async writeAPIManifest() {
+      const manifest = new Template();
+      manifest.append(`import type { APIHandler } from "quickdraw";`);
+      manifest.append("const routes: Record<string, APIHandler> = {};");
+      const apiDirectory = await recursiveReaddir(consts.api);
+
+      apiDirectory.forEach((dir, index) => {
+        const endFileRoute = dir
+          .replace(Deno.cwd(), "")
+          .replace("\\app", "")
+          .replace("/app", "")
+          .replace(/\\/g, "/");
+        const apiPath = endFileRoute.replace(".ts", "");
+        manifest.prepend(`import Handler${index} from "@app${endFileRoute}"`);
+        manifest.append(`routes["${apiPath}"] = Handler${index};`);
+      });
+
+      manifest.append("export default routes;");
+      await Deno.writeTextFile(consts.apiManifest, manifest.get());
     }
 
     async writeChunks() {
@@ -93,6 +118,7 @@ export default async function startup(
   await StartupInstance.getPages();
   StartupInstance.createRoutes();
   await StartupInstance.writeChunks();
+  await StartupInstance.writeAPIManifest();
   await bundleGlobal(mode);
 
   if (mode === "development") {
