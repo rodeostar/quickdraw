@@ -1,5 +1,4 @@
 import {
-  importRoutes,
   importServices,
   routeExists,
   serviceExists,
