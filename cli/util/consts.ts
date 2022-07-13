@@ -1,4 +1,4 @@
-import { join } from "quickdraw";
+import { join } from "../mod.ts";
 
 const withBase = (path: string) => join(Deno.cwd(), path);
 

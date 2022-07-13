@@ -1,3 +1,3 @@
-import { QuickdrawDevelop } from "quickdraw/cli";
+import { QuickdrawDevelop } from "./mod.ts";
 
 await QuickdrawDevelop();
