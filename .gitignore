@@ -5,3 +5,4 @@ npm/
 Makefile
 
 app/.qd/hmr.js
+quickdraw.json

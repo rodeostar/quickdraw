@@ -2,6 +2,7 @@
   "imports": {
     "quickdraw": "./lib/mod.ts",
     "quickdraw/client": "./lib/client.ts",
+    "quickdraw/cli": "./cli/mod.ts",
     "@app/": "./app/"
   }
 }

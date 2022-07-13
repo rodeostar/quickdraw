@@ -1,4 +1,4 @@
-import { colors } from "quickdraw";
+import { colors } from "../mod.ts";
 
 export default () =>
   console.info(
