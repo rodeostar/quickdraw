@@ -1,4 +1,4 @@
-import { consts } from "quickdraw";
+import { consts } from "../mod.ts";
 
 export const PathHelper = {
   split(str = "") {

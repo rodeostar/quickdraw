@@ -1,3 +1,3 @@
-import { server } from "quickdraw";
+import { server } from "./mod.ts";
 
 server();

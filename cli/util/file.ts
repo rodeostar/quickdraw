@@ -1,4 +1,4 @@
-import { Route } from "quickdraw";
+import { Route } from "../mod.ts";
 import { Template } from "./template.ts";
 import { PathHelper } from "./path.ts";
 

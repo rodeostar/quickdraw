@@ -1,5 +1,13 @@
-import { join, HMRServer, server } from "quickdraw";
-import { debounce, consts, banner, startupMessage, open } from "./mod.ts";
+import {
+  debounce,
+  consts,
+  banner,
+  startupMessage,
+  open,
+  join,
+  HMRServer,
+  server,
+} from "./mod.ts";
 import startup from "./startup.ts";
 
 export async function QuickdrawDevelop() {

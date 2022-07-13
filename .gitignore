@@ -4,5 +4,5 @@ npm/
 *.exe
 Makefile
 
-app/.qd/hmr.js
-quickdraw.json
+example/app/.qd
+example/.token
