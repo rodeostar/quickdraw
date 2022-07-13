@@ -1,7 +1,7 @@
 {
   "imports": {
     "@app/": "./app/",
-    "quickdraw": "https://deno.land/x/quickdraw@v0.0.4/mod.ts",
-    "quickdraw/client": "https://deno.land/x/quickdraw@v0.0.4/client.ts"
+    "quickdraw": "https://deno.land/x/quickdraw@v0.0.5/mod.ts",
+    "quickdraw/client": "https://deno.land/x/quickdraw@v0.0.5/client.ts"
   }
 }
