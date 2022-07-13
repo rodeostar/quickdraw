@@ -6,8 +6,6 @@ import {
   serveStatic,
   serveJSX,
   serveError,
-  banner,
-  startupMessage,
   Application,
   OakRouter,
 } from "quickdraw";
@@ -35,9 +33,5 @@ export async function startServer(port = 5000) {
     }
   });
 
-  banner();
-  if (Deno.env.get("MODE") === "development") {
-    await startupMessage(port);
-  }
   await app.listen({ port });
 }

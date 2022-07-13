@@ -1,17 +1,6 @@
-import {
-  Route,
-  Routes,
-  consts,
-  bundler,
-  bundleGlobal,
-  bundleHMR,
-  join,
-  exists,
-  FileHelper,
-  Template,
-  BundleMode,
-} from "quickdraw";
-
+import { Route, Routes, join, BundleMode } from "quickdraw";
+import { bundler, bundleGlobal, bundleHMR } from "./bundler.ts";
+import { exists, FileHelper, Template, consts } from "./mod.ts";
 import { recursiveReaddir } from "https://deno.land/x/recursive_readdir@v2.0.0/mod.ts";
 
 export default async function startup(

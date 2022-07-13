@@ -1,10 +1,12 @@
-import { open, debounce, join, HMRServer, consts } from "quickdraw";
+import { join, HMRServer, server } from "quickdraw";
+import { debounce, consts, banner, startupMessage, open } from "./mod.ts";
+import startup from "./startup.ts";
 
-export default async function dev() {
-  const { startup } = await import("quickdraw");
-  const { default: server } = await import("./server.ts");
-
+export async function QuickdrawDevelop() {
   await startup("development");
+
+  banner();
+  startupMessage();
 
   // Launch the server
   server();

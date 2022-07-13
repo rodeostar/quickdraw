@@ -1,11 +1,6 @@
-import {
-  BuildOptions,
-  build,
-  denoPlugin,
-  join,
-  consts,
-  BundleMode,
-} from "quickdraw";
+import { join, consts, BundleMode } from "quickdraw";
+
+import { BuildOptions, build, denoPlugin } from "./mod.ts";
 
 import { osCompat } from "./os-compat.ts";
 
