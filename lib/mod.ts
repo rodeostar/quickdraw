@@ -32,8 +32,6 @@ export type { SEOProps } from "./tsx/seo.tsx";
 export { SearchOpt } from "./tsx/seo.tsx";
 
 export { html } from "./tsx/html.tsx";
-import consts from "./consts.ts";
-export { consts };
 export { initializeTailwind } from "./tailwind.ts";
 export { startServer } from "./backend.ts";
 

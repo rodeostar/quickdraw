@@ -27,7 +27,7 @@ const sharedConfig: (mode: BundleMode) => Partial<BuildOptions> = (
   bundle: true,
   minify: mode === "production",
   minifyWhitespace: mode === "production",
-  target: mode === "production" ? "chrome58" : "esnext",
+  target: "chrome58",
 });
 
 export async function bundler(mode: BundleMode = "production", name: string) {

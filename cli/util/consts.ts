@@ -1,6 +1,6 @@
 import { join } from "../mod.ts";
 
-const withBase = (path: string) => join(Deno.cwd(), path);
+export const withBase = (path: string) => join(Deno.cwd(), path);
 
 export default {
   apiManifest: withBase("./app/.qd/manifest.ts"),

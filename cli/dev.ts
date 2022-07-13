@@ -11,13 +11,13 @@ import {
 import startup from "./startup.ts";
 
 export async function QuickdrawDevelop() {
-  await startup("development");
+  await startup();
 
   banner();
   startupMessage();
 
   // Launch the server
-  server();
+  server(consts.quickdraw);
 
   // Open the browser
   open(`http://localhost:5000`);
