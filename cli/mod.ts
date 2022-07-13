@@ -9,7 +9,7 @@ export type {
   Route,
   BundleMode,
 } from "https://deno.land/x/quickdraw@v0.0.4/mod.ts";
-export { server, HMRServer } from "../lib/mod.ts";
+export { server, HMRServer } from "https://deno.land/x/quickdraw@v0.0.4/mod.ts";
 export { join, normalize } from "https://deno.land/std@0.132.0/path/mod.ts";
 
 export { debounce } from "https://deno.land/std@0.147.0/async/mod.ts";
