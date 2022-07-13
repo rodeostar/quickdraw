@@ -1,5 +1,5 @@
-import { nav } from "./vanilla/nav.ts";
 import { hydrateRoutedComponents, hydrate, h } from "quickdraw/client";
+import { nav } from "./vanilla/nav.ts";
 import { Menu } from "./common/nav.tsx";
 
 async function global() {
