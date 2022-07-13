@@ -44,11 +44,6 @@ export const html = (routes: Routes, route: Route) => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        ${
-          Deno.env.get("MODE") === "development"
-            ? '<meta http-equiv="Cache-control" content="no-cache">'
-            : ""
-        }
         ${head.join("\n")}
         ${styleTag}
       </head>

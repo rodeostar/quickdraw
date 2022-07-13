@@ -55,7 +55,7 @@ export class FileHelper {
   }
 
   createScriptHTML(attrs?: Record<string, string>) {
-    return `<script ${Object.entries(attrs || {})
+    return `<script type="text/javascript" defer ${Object.entries(attrs || {})
       .map(([k, v]) => `${k}="${v}"`)
       .join(" ")}></script>`;
   }

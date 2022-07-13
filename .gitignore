@@ -6,3 +6,5 @@ Makefile
 
 example/app/.qd
 example/.token
+
+*.log
