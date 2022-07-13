@@ -30,12 +30,11 @@ as dealing with the drawbacks of JS first frameworks. I really like the approach
 - Add a user friendly equivalent to NextJS's getServerSideProps()/getStaticProps(), so that API calls can be made server side to drive initial static rendering
 
 
-# Run it
+### Run the example app
 
-`make dev`  - Development server with HMR
-`make prod` - Production server, client code is bundled/minified
+Visit the [example app](https://github.com/rodeostar/quickdraw/tree/main/example) for more documentation.
 
-## CheatSheet
+### CheatSheet
 
 
 ```
