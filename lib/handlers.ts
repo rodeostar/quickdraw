@@ -1,12 +1,4 @@
-import {
-  Routes,
-  Route,
-  APIHandler,
-  Context,
-  consts,
-  html,
-  Log,
-} from "quickdraw";
+import { Routes, Route, APIHandler, Context, html, Log } from "./mod.ts";
 
 export type QuickdrawHandler<T = void> = (
   context: Context,
@@ -15,18 +7,18 @@ export type QuickdrawHandler<T = void> = (
 
 export type ContextHelper<T> = (context: Context, routes?: Routes) => T;
 
-export const serveStatic: QuickdrawHandler<Promise<void>> = async (context) => {
+export const serveStatic = async (context: Context, staticRoot = "./") => {
   Log.info(`$staticReq ${context.request.url.pathname}`);
 
   await context.send({
-    root: consts.quickdraw + "/",
+    root: staticRoot,
   });
 };
 
-export const serveJSX: QuickdrawHandler<(route: Route) => Promise<void>> =
-  (context, routes) => async (route: Route) => {
+export const serveJSX: QuickdrawHandler<(route: Route) => void> =
+  (context, routes) => (route: Route) => {
     Log.info(`$jsxReq ${context.request.url.pathname}`);
-    const parsed = await html(routes, route);
+    const parsed = html(routes, route);
     context.response.body = parsed;
   };
 

@@ -7,7 +7,7 @@ import {
   SearchOpt,
   Route,
   Routes,
-} from "quickdraw";
+} from "../mod.ts";
 
 import { CommonRouter } from "quickdraw/client";
 import { Layout } from "@app/common/layout.tsx";

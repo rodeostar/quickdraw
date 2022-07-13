@@ -1,5 +1,5 @@
-import { h, Router, Component as NanoComponent, FC } from "quickdraw/client";
-import type { Routes, Route, Params, RoutedProps } from "quickdraw/client";
+import { h, Router, Component as NanoComponent, FC } from "../client.ts";
+import type { Routes, Route, Params, RoutedProps } from "../client.ts";
 
 export interface CommonRouterProps {
   routes: Routes;

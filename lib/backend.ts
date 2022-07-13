@@ -8,12 +8,12 @@ import {
   serveError,
   Application,
   OakRouter,
-} from "quickdraw";
+} from "./mod.ts";
 
 import routes from "@app/.qd/imports.ts";
 import apiRoutes from "@app/.qd/manifest.ts";
 
-export async function startServer(port = 5000) {
+export async function startServer(port = 5000, staticRoot = "./") {
   const router = new OakRouter();
   const app = new Application();
 
@@ -25,9 +25,9 @@ export async function startServer(port = 5000) {
     if (serviceExists(context, apiRoutes)) {
       serveAPI(context, apiRoutes);
     } else if (routeExists(context, routes)) {
-      await serveJSX(context, routes)(ctx);
+      serveJSX(context, routes)(ctx);
     } else if (routeIsStatic(context)) {
-      await serveStatic(context, routes);
+      await serveStatic(context, staticRoot);
     } else {
       serveError(context, routes);
     }

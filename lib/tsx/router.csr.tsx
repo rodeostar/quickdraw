@@ -1,4 +1,4 @@
-import { h, hydrate, FC, CommonRouter, Routes, Route } from "quickdraw/client";
+import { h, hydrate, FC, CommonRouter, Routes, Route } from "../client.ts";
 
 export type HydrateArgs<T> = Array<[FC<T>, string]>;
 

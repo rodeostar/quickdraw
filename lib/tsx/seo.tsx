@@ -1,4 +1,4 @@
-import { h, Helmet, Fragment, QuickdrawSettings } from "quickdraw";
+import { h, Helmet, Fragment, QuickdrawSettings } from "../mod.ts";
 
 export interface SEOProps {
   description?: string;
